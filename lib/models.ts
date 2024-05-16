@@ -1,7 +1,21 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const employeeSchema = new mongoose.Schema(
   {
+    firstname: {
+      type: String,
+      required: true,
+      unique: true,
+      min: 3,
+      max: 20,
+    },
+    lastname: {
+      type: String,
+      required: true,
+      unique: true,
+      min: 3,
+      max: 20,
+    },
     username: {
       type: String,
       required: true,
@@ -14,11 +28,19 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
+    phonenumber: {
       type: String,
-      required: true,
     },
-    img: {
+    address: {
+      type: String,
+    },
+    age: {
+      type: Number,
+    },
+    nationality: {
+      type: String,
+    },
+    image: {
       type: String,
     },
     isAdmin: {
@@ -29,12 +51,7 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    phone: {
-      type: String,
-    },
-    address: {
-      type: String,
-    },
+
   },
   { timestamps: true }
 );
@@ -46,7 +63,7 @@ const productSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    desc: {
+    description: {
       type: String,
       required: true,
     },
@@ -60,19 +77,12 @@ const productSchema = new mongoose.Schema(
       required: true,
       min: 0,
     },
-    img: {
-      type: String,
-    },
-    color: {
-      type: String,
-    },
-    size: {
+    image: {
       type: String,
     },
   },
   { timestamps: true }
 );
 
-export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Employee = mongoose.models.Employee || mongoose.model("Employee", employeeSchema);
+export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
